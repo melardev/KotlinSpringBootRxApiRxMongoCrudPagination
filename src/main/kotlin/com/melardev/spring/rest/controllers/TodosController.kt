@@ -15,7 +15,7 @@ import javax.validation.Valid
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/todos")
+@RequestMapping("/todos")
 class TodosController(@Autowired
                       private val todosRepository: TodosRepository) {
 

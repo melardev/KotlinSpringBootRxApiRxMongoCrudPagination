@@ -4,15 +4,17 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.PropertyNamingStrategy
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.autoconfigure.web.ServerProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder
+import org.springframework.web.server.WebFilter
 
 
 @Configuration
 class WebConfig {
 
-    /* TODO: Not working why? In java it does... Fix it
     @Autowired
     internal var serverProperties: ServerProperties? = null
 
@@ -27,11 +29,11 @@ class WebConfig {
                         exchange.mutate()
                                 .request(request.mutate().contextPath(contextPath).build())
                                 .build())
-            }
-            chain.filter(exchange)
+            } else
+                chain.filter(exchange)
         }
     }
-*/
+
     @Bean
     fun objectMapperBuilder(): Jackson2ObjectMapperBuilder {
         val builder = Jackson2ObjectMapperBuilder()
