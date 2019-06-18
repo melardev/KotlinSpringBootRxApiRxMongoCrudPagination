@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    mongodb:
+      database: boot_reactive_todo
+      port: 27017
+      host: localhost
+  application:
+    name: mongodb-crud
+  jpa:
+    show-sql: true
+
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  level:
+    root: warn
+    com.melardev: debug
+    org.springframework.web: info
+    org.springframework.data.mongodb.core.MongoTemplate: debug
+    org.springframework.data.mongodb.core.ReactiveMongoTemplate: debug
+    org.springframework.data.repository: debug
